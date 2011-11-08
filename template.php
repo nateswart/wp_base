@@ -1,95 +1,242 @@
 <?php
 
 /**
- *
+ * http://codex.wordpress.org/Function_Reference/language_attributes
  */
-function language_attributes() {
-  
+function language_attributes($doctype) {
+  //TODO: this may be too much output, depending on how bloginfo() is supposed to work
+  echo 'xmlns="http://www.w3.org/1999/xhtml" ';
+  echo 'xml:lang="' . $language->language . '" ';
+  echo 'lang="' . $language->language . '" dir="' . $language->dir . '"';
 }
 
-function bloginfo($v) {
+
+/**
+ * http://codex.wordpress.org/Function_Reference/bloginfo
+ */
+function bloginfo($show) {
   global $base_path;
   
-  switch($v) {
-    case 'template_directory':
-      echo $base_path . path_to_theme() . "/oulipo";
+  switch($show) {
+    case 'name':
+      echo variable_get('site_name', 'drupal');
+      break;
+    
+    case 'description':
+      echo variable_get('site_slogan', '');
       break;
       
-    case 'html_type':
-      break;
-      
-    case 'pingback_url':
+    case 'admin_email':
+      //TODO:
       break;
     
     case 'url':
       echo $base_path;
       break;
-      
-    case 'name':
-      echo variable_get('site_name', 'drupal');
+    
+    case 'wpurl':
+      echo $base_path;
       break;
       
-    case 'description':
-      echo variable_get('site_slogan', '');
+    case 'stylesheet_directory':
+      //TODO:
       break;
-      
+    
+    case 'stylesheet_url':
+      //TODO:
+      break;
+    
+    case 'theme/style.css':
+      //TODO:
+      break;
+    
+    case 'template_directory':
+      //TODO: make oulipo generic
+      echo $base_path . path_to_theme() . "/oulipo";
+      break;
+    
+    case 'template_url':
+      //TODO:
+      break;
+    
     case 'atom_url':
-      // TODO: output the feed url here
+      //TODO:
+      break;
+    
+    case 'rss2_url':
+      //TODO:
+      break;
+    
+    case 'rss_url':
+      //TODO:
+      break;
+    
+    case 'pingback_url':
+      echo $base_path . "/xmlrpc.php";
+      break;
+    
+    case 'rdf_url':
+      //TODO:
+      break;
+    
+    case 'comments_atom_url':
+      //TODO:
+      break;
+    
+    case 'comments_rss2_url':
+      //TODO:
+      break;
+    
+    case 'charset':
+      //TODO:
+      break;
+    
+    case 'html_type':
+      //TODO:
+      break;
+    
+    case 'language':
+      //TODO:
+      break;
+      
+    case 'text_direction':
+      //TODO:
+      break;
+    
+    case 'version':
+      echo "0.0a" // Honestly, do we really want to advertize exact versions?
       break;
   }
 }
 
-function add_theme_support() {}
+
+/**
+ * http://codex.wordpress.org/Function_Reference/add_theme_support
+ */
+function add_theme_support() {
+  // Currently supress
+}
   
-function wp_title() {
+
+/**
+ * http://codex.wordpress.org/Function_Reference/wp_title
+ */
+function wp_title($sep, $echo, $seplocation) {
+  //TODO: respond to variable passed in
   return variable_get('site_name', 'drupal');
 }
 
-function has_nav_menu($menu) {
+
+/**
+ * http://codex.wordpress.org/Function_Reference/has_nav_menu
+ */
+function has_nav_menu($location) {
+  //TODO: Just making assumptions for now
   $retval = false;
-  if($menu == 'main-menu') {
+  if($location == 'main-menu') {
     $retval = true;
   }
   return $retval;
 }
 
+
+/** 
+ * http://codex.wordpress.org/Function_Reference/wp_nav_menu
+ */
 function wp_nav_menu() {
   // Output the main-menu content here
-
   $menu = menu_navigation_links('main-menu');
-  
-  print '<ul class="menu">';
+  $output = "";
+  $output .= '<ul class="menu">';
   foreach($menu as $item) {
-    print '<li><a href="/' . $item['href'] . '">' . $item['title'] .'</a></li>';
+    $output .= '<li><a href="/' . $item['href'] . '">' . $item['title'] .'</a></li>';
   }
-  print '</ul>';
+  $output .= '</ul>';
   
+  echo $output;
 }
 
+
+/**
+ * http://codex.wordpress.org/Function_Reference/wp_list_pages
+ */
 function wp_list_pages() {
   // This is being suppressed - always rely on wp_nav_menu
+  // TODO: implement for real
 }
 
-function is_singular(){}
 
-function wp_head() {}
+/**
+ * http://codex.wordpress.org/Function_Reference/is_singular
+ */
+function is_singular(){
+  //TODO: 
+  return false;
+}
 
-function is_404() {}
 
-function is_home() {}
+/**
+ * http://codex.wordpress.org/Function_Reference/wp_head
+ */
+function wp_head() {
+  //TODO:
+}
 
-function is_front_page() {}
 
-function body_class() {}
+/** 
+ * http://codex.wordpress.org/Function_Reference/is_404
+ */
+function is_404() {
+  return false;
+}
 
+
+/**
+ * http://codex.wordpress.org/Function_Reference/is_home
+ */
+function is_home() {
+  //TODO:
+  return false;
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/is_front_page
+ */
+function is_front_page() {
+  return false;
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/body_class
+ */
+function body_class() {
+  //TODO:
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/get_search_form
+ */
 function get_search_form() {
-  print '<div id="searchform">';
+  $output = '';
+  
+  $output .= '<div id="searchform">';
   $block = module_invoke('search', 'block_view', 'search');
-  print render($block);
-  print '</div>';
+  $output .= render($block);
+  $output .= '</div>';
+  
+  echo $output;
 }
 
-function wp_footer() {}
+
+/**
+ * http://codex.wordpress.org/Function_Reference/wp_footer
+ */
+function wp_footer() {
+  //TODO:
+}
 
   
   
