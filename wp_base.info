@@ -1,0 +1,7 @@
+name = WP Base
+description = An adapter theme designed to be inherited by child themes who wish to implement a WordPress theme in Drupal.
+core = 7.x
+
+regions[top] = Top
+regions[help] = Help
+regions[content] = Content
