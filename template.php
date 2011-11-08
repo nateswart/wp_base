@@ -3,7 +3,8 @@
 /**
  * http://codex.wordpress.org/Function_Reference/language_attributes
  */
-function language_attributes($doctype) {
+function language_attributes($doctype=null) {
+  global $language;
   //TODO: this may be too much output, depending on how bloginfo() is supposed to work
   echo 'xmlns="http://www.w3.org/1999/xhtml" ';
   echo 'xml:lang="' . $language->language . '" ';
@@ -14,7 +15,7 @@ function language_attributes($doctype) {
 /**
  * http://codex.wordpress.org/Function_Reference/bloginfo
  */
-function bloginfo($show) {
+function bloginfo($show=null) {
   global $base_path;
   
   switch($show) {
@@ -104,7 +105,7 @@ function bloginfo($show) {
       break;
     
     case 'version':
-      echo "0.0a" // Honestly, do we really want to advertize exact versions?
+      echo "0.0a"; // Honestly, do we really want to advertize exact versions?
       break;
   }
 }
@@ -121,7 +122,7 @@ function add_theme_support() {
 /**
  * http://codex.wordpress.org/Function_Reference/wp_title
  */
-function wp_title($sep, $echo, $seplocation) {
+function wp_title($sep=null, $echo=null, $seplocation=null) {
   //TODO: respond to variable passed in
   return variable_get('site_name', 'drupal');
 }
@@ -130,7 +131,7 @@ function wp_title($sep, $echo, $seplocation) {
 /**
  * http://codex.wordpress.org/Function_Reference/has_nav_menu
  */
-function has_nav_menu($location) {
+function has_nav_menu($location=null) {
   //TODO: Just making assumptions for now
   $retval = false;
   if($location == 'main-menu') {
