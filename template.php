@@ -238,6 +238,76 @@ function wp_footer() {
   //TODO:
 }
 
+
+/** 
+ * http://codex.wordpress.org/Function_Reference/get_template_directory_uri
+ */
+function get_template_directory_uri() {
+  return bloginfo('template_directory');
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/get_bloginfo
+ */
+function get_bloginfo($show=null, $filter=null) {
+  bloginfo($show);
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/home_url
+ */
+function home_url($path=null, $scheme=null) {
+  global $base_path;
+  return $base_path;
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/esc_attr
+ */
+function esc_attr($text=null) {
+  return $text;
+}
   
   
-?>
+/**
+ * http://codex.wordpress.org/Function_Reference/add_action
+ */
+function add_action($tag=null, $function_to_add=null, $priority=null, $accepted_args=null) {
+  //TODO:
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/add_filter
+ */
+function add_filter($tag=null, $function_to_add=null, $priority=null, $accepted_args=null) {
+  //TODO:
+}
+
+
+/** 
+ * http://codex.wordpress.org/Function_Reference/add_shortcode
+ */
+function add_shortcode($tag=null, $func=null){
+  //TODO:
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/add_option
+ */
+function add_option($name=null, $value=null, $deprecated=null, $autoload=null) {
+  //TODO:
+}
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/get_option
+ */
+function get_option($show=null, $default=null) {
+  //TODO: 
+}
+  
