@@ -52,8 +52,7 @@ function bloginfo($show=null) {
       break;
     
     case 'template_directory':
-      //TODO: make oulipo generic
-      echo $base_path . path_to_theme() . "/oulipo";
+      echo $base_path . path_to_theme() . "/wp-theme";
       break;
     
     case 'template_url':
