@@ -311,3 +311,18 @@ function get_option($show=null, $default=null) {
   //TODO: 
 }
   
+  
+/**
+ * http://codex.wordpress.org/Function_Reference/wp_enqueue_script
+ */
+function wp_enqueue_script($handle=null, $src=null, $deps=null, $ver=null, $in_footer=null) {
+  
+}
+
+function register_widget() {
+  
+}
+
+function update_option() {
+  
+}
