@@ -334,3 +334,13 @@ function update_option() {
 function do_action($tag, $arg) {
   //TODO:
 }
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/remove_filter
+ */
+function remove_filter() {
+
+}
+
+
