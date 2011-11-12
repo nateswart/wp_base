@@ -326,3 +326,11 @@ function register_widget() {
 function update_option() {
   
 }
+
+
+/**
+ * http://codex.wordpress.org/Function_Reference/do_action
+ */
+function do_action($tag, $arg) {
+  //TODO:
+}
